@@ -2,7 +2,7 @@ import java.sql.DriverManager
 
 
 fun main() {
-    val tabla = "productos"
+    val tabla = "products"
     //abre la coneccion de la base de datos
     DriverManager
         .getConnection("jdbc:derby:actividad;create=true")

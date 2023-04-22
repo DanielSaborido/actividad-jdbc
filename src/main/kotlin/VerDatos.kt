@@ -8,7 +8,7 @@ fun queryRows(coneccion: Connection, tabla: String) {
         println("ID: ${rs.getInt("ID")}\t" +
                 "Nombre: ${rs.getString("NAME")}\t" +
                 "Precio: ${rs.getFloat("PRICE")}€\t" +
-                "Descripcion: ${rs.getString("DESCRIPCION")}\t" +
+                "Descripcion: ${rs.getString("DESCRIPTION")}\t" +
                 "Brand: ${rs.getString("BRAND")}\t" +
                 "Categoria: ${rs.getString("CATEGORY")}\t")
     }
