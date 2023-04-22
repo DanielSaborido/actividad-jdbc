@@ -1,14 +1,15 @@
 import java.sql.Connection
 
-fun queryRows(connection: Connection, tabla: String) {
+//funcion para seleccionar todos los datos de una tabla y mostrarla
+fun queryRows(coneccion: Connection, tabla: String) {
     val sql = "SELECT * FROM $tabla"
-    val rs = connection.createStatement().executeQuery(sql)
+    val rs = coneccion.createStatement().executeQuery(sql)
     while (rs.next()) {
         println("ID: ${rs.getInt("ID")}\t" +
-                "NAME: ${rs.getString("NAME")}\t" +
-                "PRICE: ${rs.getFloat("PRICE")}€\t" +
-                "DESCRIPTION: ${rs.getString("DESCRIPTION")}\t" +
-                "BRAND: ${rs.getString("BRAND")}\t" +
-                "CATEGORY: ${rs.getString("CATEGORY")}\t")
+                "Nombre: ${rs.getString("NAME")}\t" +
+                "Precio: ${rs.getFloat("PRICE")}€\t" +
+                "Descripcion: ${rs.getString("DESCRIPCION")}\t" +
+                "Brand: ${rs.getString("BRAND")}\t" +
+                "Categoria: ${rs.getString("CATEGORY")}\t")
     }
 }

@@ -1,26 +1,25 @@
 import java.sql.Connection
 
-fun prepareTable(connection: Connection, tabla: String) {
-    val metaData = connection.metaData
+fun prepareTable(coneccion: Connection, tabla: String) {
+    val metaData = coneccion.metaData
     val rs = metaData.getTables(null, null, tabla, null)
-
     if (!rs.next()) {
-        createTable(connection, tabla)
+        createTable(coneccion, tabla)
     } else {
-        truncateTable(connection, tabla)
+        truncateTable(coneccion, tabla)
     }
 }
 
-private fun truncateTable(connection: Connection, tabla: String) {
+private fun truncateTable(coneccion: Connection, tabla: String) {
     val sql = "TRUNCATE TABLE $tabla"
-    with (connection) {
+    with (coneccion) {
         createStatement().execute(sql)
         commit()
     }
 }
 
-private fun createTable(connection: Connection, tabla: String) {
-    //SQL statement to create a table
+private fun createTable(coneccion: Connection, tabla: String) {
+    //declaracion de SQL para crear una tabla
     val sql = """
          CREATE TABLE $tabla (
            id INT PRIMARY KEY,
@@ -31,12 +30,8 @@ private fun createTable(connection: Connection, tabla: String) {
            category VARCHAR(50))
         """.trimMargin()
 
-    with(connection) {
-        //Get and instance of statement from the connection and use
-        //the execute() method to execute the sql
+    with(coneccion) {
         createStatement().execute(sql)
-
-        //Commit the change to the database
         commit()
     }
 }

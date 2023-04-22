@@ -1,18 +1,15 @@
-import java.sql.Connection
 import java.sql.DriverManager
-import java.util.*
 
 
 fun main() {
     val tabla = "productos"
-
-    //Open a connection to the database
+    //abre la coneccion de la base de datos
     DriverManager
         .getConnection("jdbc:derby:actividad;create=true")
-        .use { connection ->
-            prepareTable(connection, tabla)//crea la tabla (poner en comentarios si la tabla esta creada)
-            insertItems(connection, tabla)//inserta los datos de la tabla (estar atento a las primary key y unique key, comentar si no ve va a insertar nada)
-            queryRows(connection, tabla)//muestra los datos de la tabla
+        .use { coneccion ->
+            prepareTable(coneccion, tabla)//crea la tabla (poner en comentarios si la tabla esta creada)
+            insertItems(coneccion, tabla)//inserta los datos de la tabla (estar atento a las primary key y unique key, comentar si no ve va a insertar nada)
+            queryRows(coneccion, tabla)//muestra los datos de la tabla
         }
 }
 
